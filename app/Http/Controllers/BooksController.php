@@ -39,13 +39,10 @@ class BooksController extends Controller
      */
     public function api(Request $request)
     {
-        $category_id = $request->category_id;
         return datatables()->of(
                     Book::select('title', 'author', 'release_date', 'publish_date', 'category_id')
                     ->with('category:id,name')
-                    ->when($category_id, function($query, $category_id){
-                        return $query->where("category_id", "=", $category_id);
-                    })->orderBy('title')
+                    ->orderBy('title')
                 ->get())->toJson();
     }
 }
