@@ -17,7 +17,7 @@ class BookFactory extends Factory
         $release_publish = $this->faker->date();
         return [
             'title' => $this->faker->sentence(3),
-            'book_category_id' => Category::inRandomOrder()->first()->id,
+            'category_id' => Category::inRandomOrder()->first()->id,
             'author' => $this->faker->name(),
             'release_date' => $release_publish,
             'publish_date' => $release_publish,
